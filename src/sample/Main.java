@@ -161,7 +161,7 @@ public class Main extends Application {
                     break;
                 case Z:
                     if (ke.isControlDown() && ke.isShiftDown())
-                        attack(3);
+                        angriff(3);
                     break;
                 case X:
                     if (ke.isControlDown() && ke.isShiftDown())
@@ -169,7 +169,7 @@ public class Main extends Application {
                     break;
                 case C:
                     if (ke.isControlDown() && ke.isShiftDown())
-                        earthquake();
+                        erdbeben();
                     break;
                 case ESCAPE:
                     Platform.exit();
@@ -208,7 +208,7 @@ public class Main extends Application {
     private static boolean inBattle = false;
     private static SpriteView.Pokemon enemy;
 
-    public static void attack(int damage) {
+    public static void angriff(int damage) {
         Platform.runLater(() -> attackImpl(damage));
     }
 
@@ -265,7 +265,7 @@ public class Main extends Application {
         battle.stop();
     }
 
-    public static void earthquake() {
+    public static void erdbeben() {
         earthquake.setValue(true);
         Timeline quakeTimeline = new Timeline();
         for (int i = 1; i < 100; i++) {
