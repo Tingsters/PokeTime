@@ -24,7 +24,9 @@ hs_err_pid*
 
 # Ignore IntelliJ project and build files
 .idea/
+*.iml
 build/
 dist/
 nbproject/
 out/
+target
