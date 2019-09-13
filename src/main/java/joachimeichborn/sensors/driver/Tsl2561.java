@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import com.pi4j.io.i2c.I2CDevice;
 
@@ -392,7 +390,6 @@ public class Tsl2561 {
 
     private IntegrationTime mIntegrationTime;
     private Gain mGain;
-    private final Logger mLogger;
 
     /**
      * Writes an 8 bit value to the specified register
@@ -400,7 +397,6 @@ public class Tsl2561 {
      * @throws IOException
      */
     private void writeByte(final int aReg, final int aValue) throws IOException {
-        mLogger.trace("Writing to register 0x" + Integer.toHexString(aReg) + " data 0x" + Integer.toHexString(aValue));
         mSensor.write((byte) aReg, (byte) aValue);
     }
 
@@ -413,8 +409,6 @@ public class Tsl2561 {
         final byte[] result = new byte[2];
         mSensor.read((byte) aReg, result, 0, 2);
 
-        mLogger.trace("Read from register 0x" + Integer.toHexString(aReg) + " data [0x"
-                + Integer.toHexString(result[0] & 0xFF) + ", 0x" + Integer.toHexString(result[1] & 0xFF) + "]");
 
         return result;
     }
@@ -439,14 +433,13 @@ public class Tsl2561 {
             Thread.sleep(mIntegrationTime.getTime());
         }
         catch (InterruptedException e) {
-            mLogger.error("Waiting for integration was interrupted");
+            System.err.println("Waiting for integration was interrupted");
         }
 
         final byte[] broadband = readWord(COMMAND_BIT | WORD_BIT | Register.BROADBAND.getRegister());
         final byte[] infrared = readWord(COMMAND_BIT | WORD_BIT | Register.INFRARED.getRegister());
 
         final Luminosity luminosity = new Luminosity(broadband, infrared, mIntegrationTime, mGain);
-        mLogger.debug("Light sensor measured " + luminosity);
 
         setPower(Power.OFF);
 
@@ -460,7 +453,6 @@ public class Tsl2561 {
      */
     public Tsl2561(final I2CDevice aSensorDevice) throws IOException {
         mSensor = aSensorDevice;
-        mLogger = LogManager.getLogger();
 
         mAutoGain = true;
         mIntegrationTime = IntegrationTime.MS_402;
@@ -480,26 +472,24 @@ public class Tsl2561 {
     }
 
     public void setIntegrationTime(final IntegrationTime aIntegrationTime) {
-        mLogger.trace("Setting integration time " + aIntegrationTime);
         try {
             writeByte(COMMAND_BIT | Register.TIMING.getRegister(), aIntegrationTime.getFieldValue() | mGain.getFieldValue());
 
             mIntegrationTime = aIntegrationTime;
         }
         catch (IOException e) {
-            mLogger.error("Could not set integration time to " + aIntegrationTime + ": " + e.getMessage());
+            System.err.println("Could not set integration time to " + aIntegrationTime + ": " + e.getMessage());
         }
     }
 
     public void setGain(final Gain aGain) {
-        mLogger.trace("Setting gain " + aGain);
         try {
             writeByte(COMMAND_BIT | Register.TIMING.getRegister(), mIntegrationTime.getFieldValue() | aGain.getFieldValue());
 
             mGain = aGain;
         }
         catch (IOException e) {
-            mLogger.error("Could not set gain to " + aGain + ": " + e.getMessage());
+            System.err.println("Could not set gain to " + aGain + ": " + e.getMessage());
         }
     }
 
@@ -510,20 +500,20 @@ public class Tsl2561 {
         Luminosity luminosity = getData();
 
         if (mAutoGain) {
-            mLogger.trace("Auto gain is active");
+            System.out.println("Auto gain is active");
             if ((luminosity.getBroadband() < mIntegrationTime.getLowThreshold()) && (mGain == Gain.X1)) {
-                mLogger.debug("broadband value too low, increasing gain");
+                System.out.println("broadband value too low, increasing gain");
                 setGain(Gain.X16);
                 luminosity = getData();
             }
             else if ((luminosity.getBroadband() > mIntegrationTime.getHighThreshold()) && (mGain == Gain.X16)) {
-                mLogger.debug("broadband value too high, decreasing gain");
+                System.out.println("broadband value too high, decreasing gain");
                 setGain(Gain.X1);
                 luminosity = getData();
             }
         }
         else {
-            mLogger.trace("Auto gain is deactivated");
+            System.out.println("Auto gain is deactivated");
         }
 
         return luminosity;
@@ -538,7 +528,7 @@ public class Tsl2561 {
 
         final double lux = luminosity.calculateLux();
 
-        mLogger.info("Calculated " + lux + " lux from raw values " + luminosity);
+        System.out.println("Calculated " + lux + " lux from raw values " + luminosity);
 
         return lux;
     }

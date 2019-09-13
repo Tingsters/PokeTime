@@ -11,7 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <javafx.version>12</javafx.version>
+    <javafx.version>11</javafx.version>
     <java.version>11</java.version>
     <pi4j.version>1.1</pi4j.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -26,11 +26,6 @@
       <artifactId>javafx-controls</artifactId>
         <version>${javafx.version}</version>
         <classifier>linux</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.11.2</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -53,20 +48,6 @@
         <version>${javafx.version}</version>
         <classifier>linux</classifier>
     </dependency>
-    <!--
-  <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-graphics</artifactId>
-        <version>${javafx.version}</version>
-        <classifier>mac</classifier>
-    </dependency>
-  <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-graphics</artifactId>
-        <version>${javafx.version}</version>
-        <classifier>windows</classifier>
-	    </dependency>
-    -->
   </dependencies>
   <build>
     <plugins>
