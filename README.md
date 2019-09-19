@@ -7,7 +7,7 @@ http://bit.ly/pokemonworkshop
 
 ## Build
 
-Currently PokeTim is built with OpenJDK 12 (depending on OpenJFX) and a recent Maven version.
+Currently PokeTim is built with OpenJDK 11 (depending on OpenJFX) and a recent Maven version.
 
 Build with 
 ```
@@ -16,14 +16,12 @@ mvn package
 
 ## Run
 
-PokeTime can be run with the JavaFX maven plugin:
+PokeTime can be run as a standalone fat-jar. However, the pi4j integration needs some environment variables to
+work properly on a Raspberry Pi 2b, so we included them in a start script:
 
+```bash
+./start
 ```
-mvn javafx:run
-```
 
 
-
-___________________________
-___________________________
 Happy hacking!
