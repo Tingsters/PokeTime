@@ -74,7 +74,7 @@ public class SensorFactory {
     }
 
 
-    public void createLightSensor(BooleanProperty nacht) throws IOException {
+    public void createLightSensor(BooleanProperty night) throws IOException {
 
         if (PiSystem.isPiUnix) {
             I2CDevice device = bus.getDevice(0x39);
