@@ -63,7 +63,7 @@ public class Main extends Application {
     public static Group root;
     public static Font pixelated = Font.loadFont(Main.class.getResourceAsStream("/fonts/pixelated.ttf"),
             Main.CELL_SIZE);
-    public static BooleanProperty night = new SimpleBooleanProperty(false);
+    public static BooleanProperty nacht = new SimpleBooleanProperty(false);
     public static Group spriteGroup = new Group();
     public static SpriteView.PokeTrainer pokeTrainer;
     public static BooleanProperty earthquake = new SimpleBooleanProperty(false);
@@ -239,8 +239,8 @@ public class Main extends Application {
 
         SensorFactory sensorFactory = SensorFactory.create();
         sensorFactory.createButton(pokeTrainer);
-        Main.pixelatedClock.isNight.bind(night);
-        sensorFactory.createLightSensor(night);
+        Main.pixelatedClock.isNight.bind(nacht);
+        sensorFactory.createLightSensor(nacht);
         sensorFactory.createAccelerometer();
 
         primaryStage.show();
@@ -305,19 +305,19 @@ public class Main extends Application {
 
                     case Z:
                         if (ke.isControlDown() && ke.isShiftDown())
-                            attack(3);
+                            angreifen(3);
 
                         break;
 
                     case X:
                         if (ke.isControlDown() && ke.isShiftDown())
-                            night.setValue(!night.getValue());
+                            nacht.setValue(!nacht.getValue());
 
                         break;
 
                     case C:
                         if (ke.isControlDown() && ke.isShiftDown())
-                            earthquake();
+                            erdbeben();
 
                         break;
 
@@ -334,7 +334,7 @@ public class Main extends Application {
     }
 
 
-    public static void attack(int damage) {
+    public static void angreifen(int damage) {
 
         Platform.runLater(() -> attackImpl(damage));
     }
@@ -372,7 +372,7 @@ public class Main extends Application {
             enemy.stop();
             enemy.arrivalHandler = null;
             sprites.remove(enemy);
-            pokemonCounter.setText("Pokemon Captured: " + ++pokemonCaught);
+            pokemonCounter.setText("Pokemon gefangen: " + ++pokemonCaught);
 
             if (sprites.size() == 1) {
                 pokeTrainer.win();
@@ -390,7 +390,7 @@ public class Main extends Application {
             return;
 
         enemy = pokemon;
-        System.out.println("A wild " + pokemon.getName() + " has appeared.");
+        System.out.println("Ein wildes " + pokemon.getName() + " ist erschienen.");
         battleSceneController.playerHealth.setText("35");
         battleSceneController.enemyHealth.setText("35");
         battleSceneController.pokemonName.setText(pokemon.getName());
@@ -404,14 +404,14 @@ public class Main extends Application {
 
     public static void flee() {
 
-        System.out.println("Pokemon trainer fled!");
+        System.out.println("Pokemontrainer ist geflohen!");
         battleScene.setVisible(false);
         inBattle = false;
         battle.stop();
     }
 
 
-    public static void earthquake() {
+    public static void erdbeben() {
 
         earthquake.setValue(true);
 

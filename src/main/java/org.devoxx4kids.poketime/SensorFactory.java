@@ -63,11 +63,11 @@ public class SensorFactory {
                     @Override
                     public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
 
-                        boolean buttonPressed = event.getState().isLow();
+                        boolean knopfGedrueckt = event.getState().isLow();
 
-                        if (buttonPressed)
-                            Main.display("Button pressed.");
-                            // Attack Pokemon!
+                        if (knopfGedrueckt)
+                            Main.display("Knopf gedrueckt.");
+                            // Pokemon angreifen!
                     }
                 });
         }
@@ -86,7 +86,8 @@ public class SensorFactory {
                                 try {
                                     double lux = lightSensor.getLux();
                                     Main.display("lux = " + lux);
-                                    // Make it night!
+                                    // Lass es Nacht werden!
+
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -115,8 +116,9 @@ public class SensorFactory {
 
                                     if (!Main.earthquake.getValue()) {
                                         if (Math.abs(x - lastGyroX) > 2000) {
-                                            Main.display("Earthquake!");
-                                            // Make an earthquake!
+                                            Main.display("Erdbeben!");
+                                            // Lass es beben!
+
                                         }
                                     }
 
@@ -133,15 +135,15 @@ public class SensorFactory {
         }
     }
 }
-// Attack Pokemon!
-//                Main.attack(3);
+// Pokemon angreifen!
+//                Main.angreifen(3);
 
 // Make it night!
 //                    if (lux < 3) {
-//                        night.setValue(true);
+//                        nacht.setValue(true);
 //                    } else {
-//                        night.setValue(false);
+//                        nacht.setValue(false);
 //                    }
 
-// Make an earthquake!
-//                            Main.earthquake();
+// Lass es beben!
+//                            Main.erdbeben();
