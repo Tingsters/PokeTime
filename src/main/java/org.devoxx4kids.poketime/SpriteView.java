@@ -240,7 +240,7 @@ public class SpriteView extends StackPane {
 
         public Rattfratz(Main.Location loc) {
 
-            super("rattata", loc, 3);
+            super("rattfratz", loc, 3);
             avoid = Main.pokeTrainer;
         }
     }
@@ -249,7 +249,7 @@ public class SpriteView extends StackPane {
 
         public Griffel(Main.Location loc) {
 
-            super("aipom", loc, 2);
+            super("griffel", loc, 2);
             avoid = Main.pokeTrainer;
             sleepy();
         }
@@ -259,7 +259,7 @@ public class SpriteView extends StackPane {
 
         public Bidiza(Main.Location loc) {
 
-            super("bidoof", loc, .5);
+            super("bidiza", loc, .5);
             avoid = Main.pokeTrainer;
             sleepy();
         }
@@ -269,7 +269,7 @@ public class SpriteView extends StackPane {
 
         public Krebscorps(Main.Location loc) {
 
-            super("corphish", loc, 1.2);
+            super("krebscorps", loc, 1.2);
             avoid = Main.pokeTrainer;
         }
     }
@@ -288,7 +288,7 @@ public class SpriteView extends StackPane {
 
         public Mampfaxo(Main.Location loc) {
 
-            super("munchlax", loc, .5);
+            super("mampfaxo", loc, .5);
             sleepy();
         }
     }
