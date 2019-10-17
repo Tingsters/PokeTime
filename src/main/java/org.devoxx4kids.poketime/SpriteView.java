@@ -269,7 +269,7 @@ public class SpriteView extends StackPane {
 
         public Krebscorps(Main.Location loc) {
 
-            super("corpish", loc, 1.2);
+            super("corphish", loc, 1.2);
             avoid = Main.pokeTrainer;
         }
     }
