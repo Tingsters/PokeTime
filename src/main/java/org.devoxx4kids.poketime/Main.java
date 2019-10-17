@@ -198,12 +198,12 @@ public class Main extends Application {
         pokeTrainer = new SpriteView.PokeTrainer(new Location(0, 3));
 
         // [3] Add some pokemon
-        spriteGroup.getChildren().add(new SpriteView.Rattata(new Location(8, 2)));
-        spriteGroup.getChildren().add(new SpriteView.Aipom(new Location(9, 4)));
-        spriteGroup.getChildren().add(new SpriteView.Bidoof(new Location(7, 6)));
-        spriteGroup.getChildren().add(new SpriteView.Corphish(new Location(5, 4)));
+        spriteGroup.getChildren().add(new SpriteView.Rattfratz(new Location(8, 2)));
+        spriteGroup.getChildren().add(new SpriteView.Griffel(new Location(9, 4)));
+        spriteGroup.getChildren().add(new SpriteView.Bidiza(new Location(7, 6)));
+        spriteGroup.getChildren().add(new SpriteView.Krebscorps(new Location(5, 4)));
         spriteGroup.getChildren().add(new SpriteView.Larvitar(new Location(6, 5)));
-        spriteGroup.getChildren().add(new SpriteView.Munchlax(new Location(3, 5)));
+        spriteGroup.getChildren().add(new SpriteView.Mampfaxo(new Location(3, 5)));
 
         populateCells(root, pokeTrainer);
         root.getChildren().add(spriteGroup);
