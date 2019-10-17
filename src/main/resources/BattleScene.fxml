@@ -29,7 +29,7 @@
       <ListView fx:id="actionMenu" layoutX="25.0" layoutY="178.0" prefHeight="162.0" prefWidth="307.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Flee" />
+               <String fx:value="Fliehen" />
             </FXCollections>
           </items>
       </ListView>
