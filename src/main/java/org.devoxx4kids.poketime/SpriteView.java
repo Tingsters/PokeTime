@@ -236,40 +236,40 @@ public class SpriteView extends StackPane {
 
     // Images by Stevie [aka Laufeyon]: http://laufeyon.deviantart.com/art/UTAU-RPG-VX-Sprite-Sheet-1-323819435
     // Zombified by Cassandra Chin
-    public static class Rattata extends Pokemon {
+    public static class Rattfratz extends Pokemon {
 
-        public Rattata(Main.Location loc) {
+        public Rattfratz(Main.Location loc) {
 
-            super("rattata", loc, 3);
+            super("rattfratz", loc, 3);
             avoid = Main.pokeTrainer;
         }
     }
 
-    public static class Aipom extends Pokemon {
+    public static class Griffel extends Pokemon {
 
-        public Aipom(Main.Location loc) {
+        public Griffel(Main.Location loc) {
 
-            super("aipom", loc, 2);
-            avoid = Main.pokeTrainer;
-            sleepy();
-        }
-    }
-
-    public static class Bidoof extends Pokemon {
-
-        public Bidoof(Main.Location loc) {
-
-            super("bidoof", loc, .5);
+            super("griffel", loc, 2);
             avoid = Main.pokeTrainer;
             sleepy();
         }
     }
 
-    public static class Corphish extends Pokemon {
+    public static class Bidiza extends Pokemon {
 
-        public Corphish(Main.Location loc) {
+        public Bidiza(Main.Location loc) {
 
-            super("corphish", loc, 1.2);
+            super("bidiza", loc, .5);
+            avoid = Main.pokeTrainer;
+            sleepy();
+        }
+    }
+
+    public static class Krebscorps extends Pokemon {
+
+        public Krebscorps(Main.Location loc) {
+
+            super("krebscorps", loc, 1.2);
             avoid = Main.pokeTrainer;
         }
     }
@@ -284,11 +284,11 @@ public class SpriteView extends StackPane {
         }
     }
 
-    public static class Munchlax extends Pokemon {
+    public static class Mampfaxo extends Pokemon {
 
-        public Munchlax(Main.Location loc) {
+        public Mampfaxo(Main.Location loc) {
 
-            super("munchlax", loc, .5);
+            super("mampfaxo", loc, .5);
             sleepy();
         }
     }
@@ -377,7 +377,7 @@ public class SpriteView extends StackPane {
 
             Main.root.getChildren().add(new Rectangle(Main.BOARD_WIDTH, Main.BOARD_HEIGHT, Color.color(0, 0, 0, .4)));
 
-            Label label = new Label("YOU WIN!!!");
+            Label label = new Label("DU HAST GEWONNEN!!!");
             label.setTextFill(Color.LIGHTGREEN);
             label.setAlignment(Pos.BASELINE_CENTER);
             label.setFont(Main.pixelated);
