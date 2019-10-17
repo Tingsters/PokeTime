@@ -435,8 +435,8 @@ public class SpriteView extends StackPane {
 
         public void sleepy() {
 
-            Main.night.addListener((observable, oldValue, night) -> {
-                if (night) {
+            Main.nacht.addListener((observable, oldValue, nacht) -> {
+                if (nacht) {
                     stop();
                     setEffect(new ColorAdjust(0, 0, -.5, 0));
                 } else {

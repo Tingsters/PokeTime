@@ -74,7 +74,7 @@ public class SensorFactory {
     }
 
 
-    public void createLightSensor(BooleanProperty night) throws IOException {
+    public void createLightSensor(BooleanProperty nacht) throws IOException {
 
         if (PiSystem.isPiUnix) {
             I2CDevice device = bus.getDevice(0x39);
@@ -138,7 +138,7 @@ public class SensorFactory {
 // Pokemon angreifen!
 //                Main.angreifen(3);
 
-// Make it night!
+// Lass es Nacht werden!
 //                    if (lux < 3) {
 //                        nacht.setValue(true);
 //                    } else {
