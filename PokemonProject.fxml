@@ -71,7 +71,7 @@
                   <Ellipse fill="#76c975" radiusX="88.0" radiusY="39.0" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="BOTTOM_CENTER" />
                   <ImageView fx:id="pokemonPicture" fitHeight="150.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@src/main/resources/images/rattata-front.png" />
+                        <Image url="@src/main/resources/images/rattfratz-front.png" />
                      </image>
                   </ImageView>
                </children>
