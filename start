@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo java -jar --module-path /usr/share/openjfx/lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -Dpi4j.debug -Dpi4j.linking=dynamic shade/poketime.jar
+mvn package && sudo java -jar --module-path /usr/share/openjfx/lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing,javafx.web -Dpi4j.debug -Dpi4j.linking=dynamic shade/poketime.jar
