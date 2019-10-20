@@ -23,5 +23,19 @@ work properly on a Raspberry Pi 2b, so we included them in a start script:
 ./start
 ```
 
+## Parts
+
+These parts were used for our setup:
+
+```bash
+Raspberry Pi 3
+TSL2561
+ADX345
+Pi Breakout Board
+
+Breadboard
+Connectors
+```
+
 
 Happy hacking!
