@@ -3,11 +3,11 @@ PokeTime
 
 Workshop built using JavaFX and the very finest retro 8-bit graphics for teaching kids programming.
 
-http://bit.ly/pokemonworkshop
+See [PokeTimePraesentation.pdf](PokeTimePraesentation.pdf) for instructions on the project.
 
 ## Build
 
-Currently PokeTim is built with OpenJDK 11 (depending on OpenJFX) and a recent Maven version.
+Currently PokeTime is built with OpenJDK 11 (depending on OpenJFX) and a recent Maven version.
 
 Build with 
 ```
@@ -22,6 +22,8 @@ work properly on a Raspberry Pi 2b, so we included them in a start script:
 ```bash
 ./start
 ```
+
+For simplicity the build command is included in the start script.
 
 ## Parts
 
