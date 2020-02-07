@@ -7,7 +7,7 @@ beizubringen.
 In [PokeTimePraesentation.pdf](PokeTimePraesentation.pdf) sind Anleitungen für das Projekt zu
 finden.
 
-## Aufbau
+## Bauen
 
 Zurzeit nutzt Poketime OpenJDK 11 und eine aktuelle Maven Version.
 
