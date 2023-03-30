@@ -1,4 +1,4 @@
-package sample;
+package org.devoxx4kids.poketime;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

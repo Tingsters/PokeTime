@@ -1,4 +1,4 @@
-package sample;
+package org.devoxx4kids.poketime;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,12 +9,12 @@ import java.io.InputStreamReader;
  * Created by Cassandra on 8/20/2017.
  */
 public class PiSystem {
-    private static boolean isWindows       = false;
-    private static boolean isLinux         = false;
-    private static boolean isHpUnix        = false;
-    public static boolean isPiUnix        = false;
-    private static boolean isSolaris       = false;
-    private static boolean isSunOS         = false;
+    private static boolean isWindows = false;
+    private static boolean isLinux = false;
+    private static boolean isHpUnix = false;
+    public static boolean isPiUnix = false;
+    private static boolean isSolaris = false;
+    private static boolean isSunOS = false;
     private static boolean archDataModel32 = false;
     private static boolean archDataModel64 = false;
 
@@ -48,15 +48,15 @@ public class PiSystem {
             final File file = new File("/etc", "os-release");
             try (FileInputStream fis = new FileInputStream(file);
                  BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis))) {
-                 String string;
-                 while ((string = bufferedReader.readLine()) != null) {
-                     if (string.toLowerCase().contains("raspbian")) {
-                         if (string.toLowerCase().contains("name")) {
+                String string;
+                while ((string = bufferedReader.readLine()) != null) {
+                    if (string.toLowerCase().contains("raspbian")) {
+                        if (string.toLowerCase().contains("name")) {
                             isPiUnix = true;
                             break;
                         }
-                     }
-                 }
+                    }
+                }
             } catch (final Exception e) {
                 e.printStackTrace();
             }

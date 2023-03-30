@@ -1,4 +1,4 @@
-package sample;
+package org.devoxx4kids.poketime;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -44,6 +44,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 
@@ -84,7 +85,7 @@ public class Main extends Application {
                         pokeTrainer.die();
                     }
 
-                    battleSceneController.playerHealth.setText("" + health);
+                    battleSceneController.playerHealth.setText(String.valueOf(health));
 
                     ScaleTransition grow = new ScaleTransition(Duration.seconds(.5));
                     grow.setToX(1.4);
@@ -227,8 +228,8 @@ public class Main extends Application {
 
         root.getChildren().add(pokemonCounter);
         pokemonCounter.setFont(pixelated);
-        pokemonCounter.setLayoutX(CELL_SIZE / 4);
-        pokemonCounter.setLayoutY(CELL_SIZE / 4);
+        pokemonCounter.setLayoutX((double) CELL_SIZE / 4);
+        pokemonCounter.setLayoutY((double) CELL_SIZE / 4);
         pokemonCounter.setTextFill(Color.DARKGREEN);
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/BattleScene.fxml"));
@@ -250,7 +251,7 @@ public class Main extends Application {
     private void populateBackground(Group root) {
 
         // Image by Vinoth Chandar: https://www.flickr.com/photos/vinothchandar/7347749188/
-        background = new ImageView(getClass().getResource("/images/forest.png").toString());
+        background = new ImageView(Objects.requireNonNull(getClass().getResource("/images/forest.png")).toString());
         background.setFitHeight(BOARD_HEIGHT);
         background.setFitWidth(BOARD_WIDTH);
         root.getChildren().add(background);
@@ -380,7 +381,7 @@ public class Main extends Application {
             // capture the pokemon
         }
 
-        battleSceneController.enemyHealth.setText("" + health);
+        battleSceneController.enemyHealth.setText(String.valueOf(health));
     }
 
 

@@ -1,4 +1,4 @@
-package sample;
+package org.devoxx4kids.poketime;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -41,15 +41,12 @@ public class BattleSceneController {
 
     @FXML
     public void initialize() {
-        actionMenu.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                switch (newValue.intValue()) {
-                    case 0:
-                        Platform.runLater(() -> {actionMenu.getSelectionModel().clearSelection();});
-                        Main.flee();
-                        break;
-                }
+        actionMenu.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.intValue() == 0) {
+                Platform.runLater(() -> {
+                    actionMenu.getSelectionModel().clearSelection();
+                });
+                Main.flee();
             }
         });
         ColorAdjust colorAdjustment = new ColorAdjust();
