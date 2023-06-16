@@ -33,7 +33,7 @@ Um das Ganze einfacher zu gestalten ist das Build-Kommando in dem Start Script m
 ```bash
 Raspberry Pi 3
 TSL2561
-ADX345
+ADXL345
 Pi Breakout Board
 
 Steckbrett

@@ -32,7 +32,7 @@ These parts were used for our setup:
 ```bash
 Raspberry Pi 3
 TSL2561
-ADX345
+ADXL345
 Pi Breakout Board
 
 Breadboard

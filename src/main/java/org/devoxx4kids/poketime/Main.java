@@ -58,7 +58,6 @@ public class Main extends Application {
     static final int BOARD_WIDTH = HORIZONTAL_CELLS * CELL_SIZE;
     static final int BOARD_HEIGHT = VERTICAL_CELLS * CELL_SIZE;
     public static boolean gameover = false;
-    private static int anInt;
     public static List<SpriteView> sprites = new ArrayList<>();
     public static PixelatedClock pixelatedClock;
     public static Group root;
@@ -277,47 +276,47 @@ public class Main extends Application {
     }
 
 
-    private void addKeyHandler(Scene scene, SpriteView mary) {
+    private void addKeyHandler(Scene scene, SpriteView player) {
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED,
-            ke -> {
-                KeyCode keyCode = ke.getCode();
+            key -> {
+                KeyCode keyCode = key.getCode();
 
                 switch (keyCode) {
                     case W:
                     case UP:
-                        mary.move(Direction.UP);
+                        player.move(Direction.UP);
                         break;
 
                     case A:
                     case LEFT:
-                        mary.move(Direction.LEFT);
+                        player.move(Direction.LEFT);
                         break;
 
                     case S:
                     case DOWN:
-                        mary.move(Direction.DOWN);
+                        player.move(Direction.DOWN);
                         break;
 
                     case D:
                     case RIGHT:
-                        mary.move(Direction.RIGHT);
+                        player.move(Direction.RIGHT);
                         break;
 
-                    case Z:
-                        if (ke.isControlDown() && ke.isShiftDown())
+                    case J:
+                        if (key.isControlDown() && key.isShiftDown())
                             angreifen(3);
 
                         break;
 
-                    case X:
-                        if (ke.isControlDown() && ke.isShiftDown())
+                    case K:
+                        if (key.isControlDown() && key.isShiftDown())
                             nacht.setValue(!nacht.getValue());
 
                         break;
 
-                    case C:
-                        if (ke.isControlDown() && ke.isShiftDown())
+                    case L:
+                        if (key.isControlDown() && key.isShiftDown())
                             erdbeben();
 
                         break;

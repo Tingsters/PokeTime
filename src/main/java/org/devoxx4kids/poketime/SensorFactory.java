@@ -2,7 +2,6 @@ package org.devoxx4kids.poketime;
 
 import com.pi4j.component.gyroscope.analogdevices.ADXL345;
 import com.pi4j.io.gpio.*;
-import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
@@ -49,17 +48,12 @@ public class SensorFactory {
         if (PiSystem.isPiUnix) {
             final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_07,
                     PinPullResistance.PULL_UP);
-            myButton.addListener(new GpioPinListenerDigital() {
 
-                @Override
-                public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-
-                    boolean knopfGedrueckt = event.getState().isLow();
-
-                    if (knopfGedrueckt)
-                        Main.display("Knopf gedrueckt.");
-                    // Pokemon angreifen!
-                }
+            myButton.addListener((GpioPinListenerDigital) event -> {
+                boolean knopfGedrueckt = event.getState().isLow();
+                if (knopfGedrueckt)
+                    Main.display("Knopf gedrueckt.");
+                // ToDo: Pokemon angreifen!
             });
         }
     }
@@ -126,6 +120,8 @@ public class SensorFactory {
         }
     }
 }
+
+
 // Pokemon angreifen!
 //                Main.angreifen(3);
 

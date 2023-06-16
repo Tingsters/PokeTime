@@ -265,7 +265,7 @@ public class SpriteView extends StackPane {
         }
     }
 
-    public static class Krebscorps extends Pokemon {
+    static class Krebscorps extends Pokemon {
 
         public Krebscorps(Main.Location loc) {
 
@@ -293,13 +293,13 @@ public class SpriteView extends StackPane {
         }
     }
 
-    public static class Pokemon extends RandomWalker {
+    static class Pokemon extends RandomWalker {
 
         private String name;
         private final Image front;
         private final Image back;
 
-        public Pokemon(String name, Main.Location loc, double speed) {
+        private Pokemon(String name, Main.Location loc, double speed) {
 
             super(loadImage("/images/" + name + ".png", 4, 4), loc, 4, 4, speed);
             front = new Image(getClass().getResourceAsStream("/images/" + name + "-front.png"));
