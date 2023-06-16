@@ -5,9 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by Cassandra on 8/20/2017.
- */
 public class PiSystem {
     private static boolean isWindows = false;
     private static boolean isLinux = false;

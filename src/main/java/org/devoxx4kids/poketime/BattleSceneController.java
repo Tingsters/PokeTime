@@ -12,9 +12,6 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-/**
- * Created by Cassandra on 9/17/2017.
- */
 public class BattleSceneController {
     @FXML
     public Label pokemonName;

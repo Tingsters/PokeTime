@@ -14,10 +14,6 @@ import joachimeichborn.sensors.driver.Tsl2561;
 
 import java.io.IOException;
 
-
-/**
- * Created by Cassandra on 9/9/2016.
- */
 public class SensorFactory {
 
     private static SensorFactory factory;
