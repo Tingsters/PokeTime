@@ -14,74 +14,72 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="800.0" stylesheets="@src/sample/BattleScene.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BattleSceneController">
-   <children>
-      <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@src/sample/images/battle_background.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="8.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@src/sample/images/rattata-back.png" />
-         </image>
-      </ImageView>
-      <ListView layoutX="25.0" layoutY="178.0" prefHeight="162.0" prefWidth="307.0">
-         <items>
+<AnchorPane prefHeight="480.0" prefWidth="800.0" stylesheets="@src/main/resources/BattleScene.css"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.devoxx4kids.poketime.BattleSceneController">
+    <ImageView fitHeight="480.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@src/main/resources/images/battle_background.png"/>
+    </ImageView>
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="8.0" layoutY="330.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@src/main/resources/images/rattfratz-back.png"/>
+    </ImageView>
+    <ListView layoutX="25.0" layoutY="178.0" prefHeight="162.0" prefWidth="307.0">
+        <items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Tackle" />
-               <String fx:value="Night Slash" />
-               <String fx:value="Earthquake" />
-               <String fx:value="Run" />
+                <String fx:value="Tackle"/>
+                <String fx:value="Night Slash"/>
+                <String fx:value="Earthquake"/>
+                <String fx:value="Run"/>
             </FXCollections>
-          </items>
-      </ListView>
-      <HBox alignment="CENTER" layoutX="46.0" layoutY="49.0" spacing="20.0">
-         <children>
-            <Label text="HP" textFill="#004ce4">
-               <font>
-                  <Font size="39.0" />
-               </font>
-            </Label>
-            <TextField editable="false" prefHeight="69.0" prefWidth="81.0" text="35">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </TextField>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="600.0" layoutY="49.0" spacing="20.0">
-         <children>
+        </items>
+    </ListView>
+    <HBox alignment="CENTER" layoutX="46.0" layoutY="49.0" spacing="20.0">
+        <Label text="HP" textFill="#004ce4">
+            <font>
+                <Font size="39.0"/>
+            </font>
+        </Label>
+        <TextField editable="false" prefHeight="69.0" prefWidth="81.0" text="35">
+            <font>
+                <Font size="32.0"/>
+            </font>
+        </TextField>
+    </HBox>
+    <HBox alignment="CENTER" layoutX="600.0" layoutY="49.0" spacing="20.0">
+        <children>
             <Label text="HP" textFill="#cd2828">
-               <font>
-                  <Font size="39.0" />
-               </font>
+                <font>
+                    <Font size="39.0"/>
+                </font>
             </Label>
             <TextField editable="false" prefHeight="69.0" prefWidth="81.0" text="35">
-               <font>
-                  <Font size="32.0" />
-               </font>
+                <font>
+                    <Font size="32.0"/>
+                </font>
             </TextField>
-         </children>
-      </HBox>
-      <VBox alignment="CENTER" layoutX="513.0" layoutY="203.0">
-         <children>
+        </children>
+    </HBox>
+    <VBox alignment="CENTER" layoutX="513.0" layoutY="203.0">
+        <children>
             <StackPane>
-               <children>
-                  <Ellipse fill="#76c975" radiusX="88.0" radiusY="39.0" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="BOTTOM_CENTER" />
-                  <ImageView fx:id="pokemonPicture" fitHeight="150.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@src/sample/images/rattata-front.png" />
-                     </image>
-                  </ImageView>
-               </children>
+                <children>
+                    <Ellipse fill="#76c975" radiusX="88.0" radiusY="39.0" stroke="BLACK" strokeType="INSIDE"
+                             StackPane.alignment="BOTTOM_CENTER"/>
+                    <ImageView fx:id="pokemonPicture" fitHeight="150.0" fitWidth="211.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <image>
+                            <Image url="@src/main/resources/images/rattfratz-front.png"/>
+                        </image>
+                    </ImageView>
+                </children>
             </StackPane>
-            <Label fx:id="pokemonName" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0" prefWidth="216.0" text="Ratata">
-               <font>
-                  <Font size="41.0" />
-               </font>
+            <Label fx:id="pokemonName" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0"
+                   prefWidth="216.0" text="Ratata">
+                <font>
+                    <Font size="41.0"/>
+                </font>
             </Label>
-         </children>
-      </VBox>
-   </children>
+        </children>
+    </VBox>
 </AnchorPane>

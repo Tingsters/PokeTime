@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="480.0" prefWidth="800.0" stylesheets="@BattleScene.css" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.devoxx4kids.poketime.BattleSceneController">
+    <ImageView fx:id="battleBackground" fitHeight="480.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/battle_background.png"/>
+    </ImageView>
+    <ImageView fx:id="trainerPokemon" fitHeight="150.0" fitWidth="200.0" layoutX="8.0" layoutY="330.0"
+               pickOnBounds="true" preserveRatio="true">
+        <Image url="@images/pikachu-back.png"/>
+    </ImageView>
+    <ListView fx:id="actionMenu" layoutX="25.0" layoutY="178.0" prefHeight="162.0" prefWidth="307.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Fliehen"/>
+            </FXCollections>
+        </items>
+    </ListView>
+    <HBox alignment="CENTER" layoutX="46.0" layoutY="49.0" spacing="20.0">
+        <Label text="HP" textFill="#004ce4">
+            <font>
+                <Font size="39.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="playerHealth" editable="false" prefHeight="69.0" prefWidth="81.0" text="35">
+            <font>
+                <Font size="32.0"/>
+            </font>
+        </TextField>
+    </HBox>
+    <HBox alignment="CENTER" layoutX="600.0" layoutY="49.0" spacing="20.0">
+        <Label text="HP" textFill="#cd2828">
+            <font>
+                <Font size="39.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="enemyHealth" editable="false" prefHeight="69.0" prefWidth="81.0" text="35">
+            <font>
+                <Font size="32.0"/>
+            </font>
+        </TextField>
+    </HBox>
+    <VBox alignment="CENTER" layoutX="513.0" layoutY="203.0">
+        <StackPane>
+            <Ellipse fill="#76c975" radiusX="88.0" radiusY="39.0" stroke="BLACK" strokeType="INSIDE"
+                     StackPane.alignment="BOTTOM_CENTER"/>
+            <ImageView fx:id="pokemonPicture" fitHeight="150.0" fitWidth="211.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@images/rattfratz-front.png"/>
+            </ImageView>
+        </StackPane>
+        <Label fx:id="pokemonName" alignment="CENTER" contentDisplay="CENTER" prefHeight="59.0"
+               prefWidth="216.0" text="Rattfratz">
+            <font>
+                <Font size="41.0"/>
+            </font>
+        </Label>
+    </VBox>
+</AnchorPane>
