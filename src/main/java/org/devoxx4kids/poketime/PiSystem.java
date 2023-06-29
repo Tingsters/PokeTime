@@ -44,7 +44,7 @@ public class PiSystem {
         if (isLinux) {
             final File file = new File("/etc", "os-release");
             try (FileInputStream fis = new FileInputStream(file);
-                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis))) {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis))) {
                 String string;
                 while ((string = bufferedReader.readLine()) != null) {
                     if (string.toLowerCase().contains("raspbian")) {

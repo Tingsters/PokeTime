@@ -42,6 +42,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import javafx.util.Duration;
+import org.devoxx4kids.poketime.Main.Direction;
+import org.devoxx4kids.poketime.Main.Location;
 
 
 public class SpriteView extends StackPane {
@@ -55,8 +57,8 @@ public class SpriteView extends StackPane {
     private SpriteView following;
     IntegerProperty number = new SimpleIntegerProperty();
 
-    ObjectProperty<Main.Direction> direction = new SimpleObjectProperty<>();
-    ObjectProperty<Main.Location> location = new SimpleObjectProperty<>();
+    ObjectProperty<Direction> direction = new SimpleObjectProperty<>();
+    ObjectProperty<Location> location = new SimpleObjectProperty<>();
     IntegerProperty frame = new SimpleIntegerProperty(1);
     int spriteWidth;
     int spriteHeight;
@@ -77,13 +79,13 @@ public class SpriteView extends StackPane {
     }
 
 
-    public SpriteView(Image spriteSheet, Main.Location loc) {
+    public SpriteView(Image spriteSheet, Location loc) {
 
         this(spriteSheet, loc, 3, 4, 1);
     }
 
 
-    public SpriteView(Image spriteSheet, Main.Location loc, int spritesX, int spritesY, double speed) {
+    public SpriteView(Image spriteSheet, Location loc, int spritesX, int spritesY, double speed) {
 
         this.spritesX = spritesX;
         this.speed = speed;
@@ -100,24 +102,24 @@ public class SpriteView extends StackPane {
         frame.addListener(updateImage);
         spriteWidth = (int) (spriteSheet.getWidth() / spritesX);
         spriteHeight = (int) (spriteSheet.getHeight() / spritesY);
-        direction.set(Main.Direction.RIGHT);
+        direction.set(Direction.RIGHT);
         getChildren().add(imageView);
         setPrefSize(Main.CELL_SIZE, Main.CELL_SIZE);
         StackPane.setAlignment(imageView, Pos.BOTTOM_CENTER);
     }
 
-    public void setDirection(Main.Direction direction) {
+    public void setDirection(Direction direction) {
 
         this.direction.setValue(direction);
     }
 
 
-    protected boolean inBounds(Main.Direction direction) {
+    protected boolean inBounds(Direction direction) {
 
-        Main.Location loc = location.getValue().offset(direction.getXOffset(), direction.getYOffset());
+        Location loc = location.getValue().offset(direction.getXOffset(), direction.getYOffset());
 
         return (loc.cell_x >= 0) && (loc.cell_x < Main.HORIZONTAL_CELLS) && (loc.cell_y >= 0)
-            && (loc.cell_y < Main.VERTICAL_CELLS);
+                && (loc.cell_y < Main.VERTICAL_CELLS);
     }
 
 
@@ -159,7 +161,7 @@ public class SpriteView extends StackPane {
     }
 
 
-    public void moveTo(Main.Location loc) {
+    public void moveTo(Location loc) {
 
         long mult = Main.pixelatedClock.multiplier;
 
@@ -180,9 +182,9 @@ public class SpriteView extends StackPane {
         location.setValue(loc);
         walking = new Timeline(Animation.INDEFINITE,
                 new KeyFrame(Duration.seconds(1.0 / speed * mult),
-                    new KeyValue(translateXProperty(), loc.getX() * Main.CELL_SIZE)),
+                        new KeyValue(translateXProperty(), loc.getX() * Main.CELL_SIZE)),
                 new KeyFrame(Duration.seconds(1.0 / speed * mult),
-                    new KeyValue(translateYProperty(), loc.getY() * Main.CELL_SIZE)),
+                        new KeyValue(translateYProperty(), loc.getY() * Main.CELL_SIZE)),
                 new KeyFrame(Duration.seconds(.25 / speed * mult), new KeyValue(frame, 0)),
                 new KeyFrame(Duration.seconds(.5 / speed * mult), new KeyValue(frame, 1)),
                 new KeyFrame(Duration.seconds(.75 / speed * mult), new KeyValue(frame, 2)),
@@ -196,7 +198,7 @@ public class SpriteView extends StackPane {
     }
 
 
-    public void move(Main.Direction direction) {
+    public void move(Direction direction) {
 
         if (walking != null && walking.getStatus().equals(Animation.Status.RUNNING))
             return;
@@ -205,13 +207,13 @@ public class SpriteView extends StackPane {
     }
 
 
-    public Main.Location getLocation() {
+    public Location getLocation() {
 
         return location.get();
     }
 
 
-    public Main.Direction getDirection() {
+    public Direction getDirection() {
 
         return direction.get();
     }
@@ -238,7 +240,7 @@ public class SpriteView extends StackPane {
     // Zombified by Cassandra Chin
     public static class Rattfratz extends Pokemon {
 
-        public Rattfratz(Main.Location loc) {
+        public Rattfratz(Location loc) {
 
             super("rattfratz", loc, 3);
             avoid = Main.pokeTrainer;
@@ -247,7 +249,7 @@ public class SpriteView extends StackPane {
 
     public static class Griffel extends Pokemon {
 
-        public Griffel(Main.Location loc) {
+        public Griffel(Location loc) {
 
             super("griffel", loc, 2);
             avoid = Main.pokeTrainer;
@@ -257,7 +259,7 @@ public class SpriteView extends StackPane {
 
     public static class Bidiza extends Pokemon {
 
-        public Bidiza(Main.Location loc) {
+        public Bidiza(Location loc) {
 
             super("bidiza", loc, .5);
             avoid = Main.pokeTrainer;
@@ -267,7 +269,7 @@ public class SpriteView extends StackPane {
 
     static class Krebscorps extends Pokemon {
 
-        public Krebscorps(Main.Location loc) {
+        public Krebscorps(Location loc) {
 
             super("krebscorps", loc, 1.2);
             avoid = Main.pokeTrainer;
@@ -276,7 +278,7 @@ public class SpriteView extends StackPane {
 
     public static class Larvitar extends Pokemon {
 
-        public Larvitar(Main.Location loc) {
+        public Larvitar(Location loc) {
 
             super("larvitar", loc, 1.2);
             avoid = Main.pokeTrainer;
@@ -286,7 +288,7 @@ public class SpriteView extends StackPane {
 
     public static class Mampfaxo extends Pokemon {
 
-        public Mampfaxo(Main.Location loc) {
+        public Mampfaxo(Location loc) {
 
             super("mampfaxo", loc, .5);
             sleepy();
@@ -299,18 +301,18 @@ public class SpriteView extends StackPane {
         private final Image front;
         private final Image back;
 
-        private Pokemon(String name, Main.Location loc, double speed) {
+        private Pokemon(String name, Location loc, double speed) {
 
             super(loadImage("/images/" + name + ".png", 4, 4), loc, 4, 4, speed);
             front = new Image(getClass().getResourceAsStream("/images/" + name + "-front.png"));
             back = new Image(getClass().getResourceAsStream("/images/" + name + "-back.png"));
             this.name = Character.toUpperCase(name.charAt(0)) + name.substring(1);
             arrivalHandler =
-                e -> {
-                if (Main.pokeTrainer.location.get().equals(location.get())) {
-                    Main.battle(this);
-                }
-            };
+                    e -> {
+                        if (Main.pokeTrainer.location.get().equals(location.get())) {
+                            Main.battle(this);
+                        }
+                    };
         }
 
         public String getName() {
@@ -335,21 +337,21 @@ public class SpriteView extends StackPane {
 
         static final Image ANN = loadImage("/images/black-girl.png");
 
-        public PokeTrainer(Main.Location loc) {
+        public PokeTrainer(Location loc) {
 
             super(ANN, loc);
             arrivalHandler =
-                e -> {
-                for (SpriteView s : Main.sprites) {
-                    if (s instanceof Pokemon) {
-                        Pokemon p = (Pokemon) s;
+                    e -> {
+                        for (SpriteView s : Main.sprites) {
+                            if (s instanceof Pokemon) {
+                                Pokemon p = (Pokemon) s;
 
-                        if (s.location.get().equals(location.get())) {
-                            Main.battle(p);
+                                if (s.location.get().equals(location.get())) {
+                                    Main.battle(p);
+                                }
+                            }
                         }
-                    }
-                }
-            };
+                    };
         }
 
         public void die() {
@@ -391,37 +393,37 @@ public class SpriteView extends StackPane {
 
         protected Timeline walk;
         protected boolean idle = false;
-        protected Main.Location target;
+        protected Location target;
         protected SpriteView avoid;
 
-        public RandomWalker(Image spriteSheet, Main.Location loc) {
+        public RandomWalker(Image spriteSheet, Location loc) {
 
             this(spriteSheet, loc, 3, 4, 1);
         }
 
 
-        public RandomWalker(Image spriteSheet, Main.Location loc, int spritesX, int spritesY, double speed) {
+        public RandomWalker(Image spriteSheet, Location loc, int spritesX, int spritesY, double speed) {
 
             super(spriteSheet, loc, spritesX, spritesY, speed);
 
             long mult = Main.pixelatedClock.multiplier;
             walk = new Timeline(new KeyFrame(Duration.seconds(.2 * mult),
-                        actionEvent -> {
-                            if (idle)
-                                return;
+                    actionEvent -> {
+                        if (idle)
+                            return;
 
-                            if (target != null) {
-                                move(getLocation().directionTo(target));
-                            } else if (avoid != null && (getLocation().distance(avoid.location.get()) < 2)) {
-                                move(getLocation().directionFrom(avoid.location.get()));
-                            } else {
-                                Main.Direction random = Main.Direction.random();
+                        if (target != null) {
+                            move(getLocation().directionTo(target));
+                        } else if (avoid != null && (getLocation().distance(avoid.location.get()) < 2)) {
+                            move(getLocation().directionFrom(avoid.location.get()));
+                        } else {
+                            Direction random = Direction.random();
 
-                                if (inBounds(random)) {
-                                    move(random);
-                                }
+                            if (inBounds(random)) {
+                                move(random);
                             }
-                        }));
+                        }
+                    }));
             walk.setCycleCount(Timeline.INDEFINITE);
             walk.play();
             Main.earthquake.addListener((observable, oldValue, earthquake) -> {
@@ -463,36 +465,36 @@ public class SpriteView extends StackPane {
 
         private ObservableList<SpriteView> animals;
 
-        public Shepherd(Image spriteSheet, Main.Location loc) {
+        public Shepherd(Image spriteSheet, Location loc) {
 
             this(spriteSheet, loc, 3, 4);
         }
 
 
-        public Shepherd(Image spriteSheet, Main.Location loc, int spritesX, int spritesY) {
+        public Shepherd(Image spriteSheet, Location loc, int spritesX, int spritesY) {
 
             super(spriteSheet, loc, spritesX, spritesY, 1);
             animals = FXCollections.observableArrayList();
             animals.addListener((ListChangeListener) c -> {
-                    ObservableList<Node> children = ((Group) getParent()).getChildren();
+                ObservableList<Node> children = ((Group) getParent()).getChildren();
 
-                    while (c.next()) {
-                        if (c.wasAdded() || c.wasRemoved() || c.wasReplaced()) {
-                            children.removeAll(c.getRemoved());
-                            children.addAll(c.getAddedSubList());
+                while (c.next()) {
+                    if (c.wasAdded() || c.wasRemoved() || c.wasReplaced()) {
+                        children.removeAll(c.getRemoved());
+                        children.addAll(c.getAddedSubList());
 
-                            SpriteView prev = this;
-                            int number = 0;
+                        SpriteView prev = this;
+                        int number = 0;
 
-                            for (SpriteView a : animals) {
-                                a.following = prev;
-                                a.number.set(++number);
-                                prev.follower = a;
-                                prev = a;
-                            }
+                        for (SpriteView a : animals) {
+                            a.following = prev;
+                            a.number.set(++number);
+                            prev.follower = a;
+                            prev = a;
                         }
                     }
-                });
+                }
+            });
         }
 
         public ObservableList<SpriteView> getAnimals() {
@@ -502,7 +504,7 @@ public class SpriteView extends StackPane {
 
 
         @Override
-        public void move(Main.Direction direction) {
+        public void move(Direction direction) {
 
             if (walking != null && walking.getStatus().equals(Animation.Status.RUNNING))
                 return;
@@ -510,17 +512,17 @@ public class SpriteView extends StackPane {
             if (!inBounds(direction))
                 return;
 
-            Main.Location myOldLoc = location.get();
+            Location myOldLoc = location.get();
             moveTo(location.getValue().offset(direction.getXOffset(), direction.getYOffset()));
             animals.stream()
-                .reduce(myOldLoc,
-                    (loc, sprt) -> {
-                        Main.Location oldLoc = sprt.location.get();
-                        sprt.moveTo(loc);
+                    .reduce(myOldLoc,
+                            (loc, sprt) -> {
+                                Location oldLoc = sprt.location.get();
+                                sprt.moveTo(loc);
 
-                        return oldLoc;
-                    },
-                    (loc1, loc2) -> loc1);
+                                return oldLoc;
+                            },
+                            (loc1, loc2) -> loc1);
         }
     }
 

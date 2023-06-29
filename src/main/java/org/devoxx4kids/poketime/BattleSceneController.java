@@ -41,7 +41,7 @@ public class BattleSceneController {
                 Platform.runLater(() -> {
                     actionMenu.getSelectionModel().clearSelection();
                 });
-                Main.flee();
+                Main.endBattle("");
             }
         });
         ColorAdjust colorAdjustment = new ColorAdjust();

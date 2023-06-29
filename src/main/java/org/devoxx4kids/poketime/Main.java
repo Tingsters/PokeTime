@@ -80,7 +80,7 @@ public class Main extends Application {
                     health = Math.max(health - 5, 0);
 
                     if (health == 0) {
-                        flee();
+                        endBattle("Pokemontrainer ist geflohen!");
                         pokeTrainer.die();
                     }
 
@@ -238,7 +238,7 @@ public class Main extends Application {
         battleScene.setVisible(false);
 
         SensorFactory sensorFactory = SensorFactory.create();
-        sensorFactory.createButton(pokeTrainer);
+        sensorFactory.createButton();
         Main.pixelatedClock.isNight.bind(nacht);
         sensorFactory.createLightSensor(nacht);
         sensorFactory.createAccelerometer();
@@ -367,7 +367,7 @@ public class Main extends Application {
         health = Math.max(health - damage, 0);
 
         if (health == 0) {
-            flee();
+            endBattle("Pokemon gefangen!");
             spriteGroup.getChildren().remove(enemy);
             enemy.stop();
             enemy.arrivalHandler = null;
@@ -402,9 +402,9 @@ public class Main extends Application {
     }
 
 
-    public static void flee() {
+    public static void endBattle(String message) {
 
-        System.out.println("Pokemontrainer ist geflohen!");
+        System.out.println(message);
         battleScene.setVisible(false);
         inBattle = false;
         battle.stop();
@@ -430,8 +430,9 @@ public class Main extends Application {
     }
 
 
-    public static void display(String message) {
+    public static void displayAndLog(String message) {
 
+        System.out.println(message);
         Platform.runLater(() -> {
             messageDisplay.setText(message);
             clearMessageDisplay.playFromStart();
