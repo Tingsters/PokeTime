@@ -41,7 +41,7 @@ public class BattleSceneController {
                 Platform.runLater(() -> {
                     actionMenu.getSelectionModel().clearSelection();
                 });
-                Main.endBattle("");
+                Main.endBattle("Poketrainer ist geflohen");
             }
         });
         ColorAdjust colorAdjustment = new ColorAdjust();

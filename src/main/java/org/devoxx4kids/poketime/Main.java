@@ -80,7 +80,7 @@ public class Main extends Application {
                     health = Math.max(health - 5, 0);
 
                     if (health == 0) {
-                        endBattle("Pokemontrainer ist geflohen!");
+                        endBattle("Poketrainer wurde besiegt!");
                         pokeTrainer.die();
                     }
 
