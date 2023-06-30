@@ -11,7 +11,7 @@ Currently PokeTime is built with OpenJDK 11 (depending on OpenJFX) and a recent 
 
 Build with 
 ```
-mvn package
+./mvnw package
 ```
 
 ## Run

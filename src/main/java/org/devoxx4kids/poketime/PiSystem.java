@@ -5,9 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by Cassandra on 8/20/2017.
- */
 public class PiSystem {
     private static boolean isWindows = false;
     private static boolean isLinux = false;
@@ -47,7 +44,7 @@ public class PiSystem {
         if (isLinux) {
             final File file = new File("/etc", "os-release");
             try (FileInputStream fis = new FileInputStream(file);
-                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis))) {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis))) {
                 String string;
                 while ((string = bufferedReader.readLine()) != null) {
                     if (string.toLowerCase().contains("raspbian")) {

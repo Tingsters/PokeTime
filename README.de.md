@@ -9,11 +9,11 @@ finden.
 
 ## Bauen
 
-Zurzeit nutzt Poketime OpenJDK 11 und eine aktuelle Maven Version.
+Zurzeit nutzt PokeTime OpenJDK 11 und eine aktuelle Maven Version.
 
 Bauen mit
 ```
-mvn package
+./mvnw package
 ```
 
 ## Starten
