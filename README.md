@@ -1,15 +1,14 @@
 
 PokeTime
 ====================
+The Pokemon have all escaped help to capture them with a Raspberry Pi!
 
-Workshop built using JavaFX and the very finest retro 8-bit graphics for teaching kids programming.
+The program is built with JavaFX and is designed to run on a Raspberry Pi. This workshop teaches kids how to use a Raspberry Pi, how to wire on a breadboard, and type some code in Nano.
 
 This is a link to the slides and instructions:
 http://bit.ly/pokemonworkshop
 
 This is the list of hardware you will need for the kids workshop. Some of the components (like the light sensor and accelerometer) require some light soldering.
-
-This is the list of hardware you will need for the kids workshop. Also, some of the components (like the sensors) require some light soldering.  
 
 -   Raspberry Pi 3 or higher
 -   Raspberry Pi Touch Display [https://www.raspberrypi.com/products/raspberry-pi-touch-display/](https://www.raspberrypi.com/products/raspberry-pi-touch-display/)
@@ -34,3 +33,5 @@ This is the list of hardware you will need for the kids workshop. Also, some of 
     
 -   Keyboard - Any USB keyboard will work. I use foldable silicon keyboards like this ([https://www.amazon.com/Sungwoo-Foldable-Silicone-Keyboard-Waterproof/dp/B06WWM5TC6/](https://www.amazon.com/Sungwoo-Foldable-Silicone-Keyboard-Waterproof/dp/B06WWM5TC6/)). You can also just buy a basic keyboard like this one ([https://www.amazon.com/AmazonBasics-Matte-Keyboard-QWERTY-Layout/dp/B07WJ5D3H4/](https://www.amazon.com/AmazonBasics-Matte-Keyboard-QWERTY-Layout/dp/B07WJ5D3H4/)).
 -   Micro SD Card 4gb or higher
+
+This set of hardware is also compatible with the PhippyRescue kids workshop (which was made more recently), and it is also posted on my GitHub repository.
